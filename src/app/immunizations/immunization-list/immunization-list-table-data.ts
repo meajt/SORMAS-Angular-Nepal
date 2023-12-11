@@ -16,18 +16,6 @@ export const defaultColumnDefs: TableColumn[] = [
     },
   },
   {
-    name: 'captions.Immunization.personUuid',
-    dataKey: 'personUuid',
-    isSortable: true,
-    sticky: true,
-    format: {
-      type: TableDataFormatOptions.LINK,
-      pattern: '/persons/person/$param1',
-      params: ['personUuid'],
-      truncate: 6,
-    },
-  },
-  {
     name: 'captions.Immunization.personFirstName',
     dataKey: 'personFirstName',
     isSortable: true,

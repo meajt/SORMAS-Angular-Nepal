@@ -117,8 +117,6 @@ export class ImmunizationAddComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.push(
       this.personService.add([person]).subscribe({
         next: (result: any) => {
-          console.log("Person is ", person, result);
-          console.log("Formvalue is ", rest);
           this.saveImmunization($service, {
             ...rest,
             ...{
