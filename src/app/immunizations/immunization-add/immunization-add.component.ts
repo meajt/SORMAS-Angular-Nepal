@@ -117,6 +117,7 @@ export class ImmunizationAddComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.push(
       this.personService.add([person]).subscribe({
         next: (result: any) => {
+          delete rest["facilityTypeGroup"];
           this.saveImmunization($service, {
             ...rest,
             ...{
@@ -124,7 +125,7 @@ export class ImmunizationAddComponent implements AfterViewInit, OnDestroy {
                 uuid: person.uuid,
               },
               reportingUser: {
-                uuid: "TK45KJ-TGROSP-R5GG7H-XKE22D2E"
+                uuid: "TTNLUW-6O2QJX-CLFBZS-ZTSOKKBQ"
               }
             },
           });

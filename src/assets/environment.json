@@ -1,7 +1,7 @@
 {
   "keycloakRealm": "SORMAS",
   "keycloakClientId": "sormas-ui",
-  "keycloakUrl": "http://192.168.13.187:8080/keycloak/auth/",
-  "apiUrl": "http://localhost:4201/sormas-rest",
+  "keycloakUrl": "http://192.168.13.35:8080/keycloak/auth/",
+  "apiUrl": "http://192.168.13.35:4201/sormas-rest",
   "domainSubfolder": "/"
 }

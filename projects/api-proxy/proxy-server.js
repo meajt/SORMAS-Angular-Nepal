@@ -15,7 +15,7 @@ const API_SERVICE_URL = process.env.API_SERVICE_URL;
 
 app.use(
   cors({
-    origin: process.env.ANGULAR_ORIGIN,
+    origin: "*",
     // credentials: true,
   })
 );
