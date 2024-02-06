@@ -12,18 +12,23 @@
     .mat-expansion-panel {
       @include mat.elevation(0);
 
-      border: solid 1px mat.get-color-from-palette($sormas-accent, 200);
+      border: solid 2px mat.get-color-from-palette($sormas-accent, 300);
       color: unset;
+      border-radius: 0px;
     }
 
     .mat-expansion-panel-header {
       height: auto;
-      padding: 16px 24px;
+      padding: 10px;
+      color: mat.get-color-from-palette($sormas-accent, 800);
 
       &:hover,
       &:focus {
         background: unset !important;
       }
+    }
+    .mat-expansion-panel-body{
+      padding: 0 10px;
     }
 
     .mat-expansion-panel-header-title {

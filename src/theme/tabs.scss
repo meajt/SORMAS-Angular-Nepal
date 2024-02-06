@@ -11,10 +11,10 @@
   :root {
     .mat-tab-link {
       min-width: auto;
+      font-size: 20px;
       padding: 8px 0;
       margin-right: 16px;
       color: mat.get-color-from-palette($sormas-accent, 800);
-
       &:hover,
       &:focus,
       &.mat-tab-label-active {
@@ -70,7 +70,6 @@
       .mat-ink-bar {
         display: none;
       }
-
       .mat-tab-links {
         width: 100%;
         flex-direction: column;

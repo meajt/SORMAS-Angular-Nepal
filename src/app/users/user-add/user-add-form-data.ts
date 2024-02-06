@@ -1,11 +1,11 @@
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { AreaType, Language, PointOfEntryType, UserRole } from '../../_constants/enums';
 import {
   FORM_DATA_CHECKBOX,
   FORM_DATA_INPUT,
   FORM_DATA_SELECT,
   FORM_DATA_WIDGET,
 } from '../../_constants/form-data';
-import { AreaType, PointOfEntryType, UserRole, Language } from '../../_constants/enums';
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -38,7 +38,6 @@ export const FORM_DATA_USER_ADD = [
         ...FORM_DATA_INPUT,
         key: 'userEmail',
         label: 'captions.User.userEmail',
-        newLine: true,
         hint: 'strings.infoUserEmail',
       },
       {
@@ -52,7 +51,6 @@ export const FORM_DATA_USER_ADD = [
         key: 'language',
         label: 'User.language',
         options: optionsLanguages,
-        newLine: true,
       },
     ],
   },
@@ -114,7 +112,7 @@ export const FORM_DATA_USER_ADD = [
         label: 'captions.Facility.typeGroup',
         service: 'helperService',
         serviceMethod: 'getFacilityCategories',
-        className: 'size-large',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
@@ -128,8 +126,7 @@ export const FORM_DATA_USER_ADD = [
             key: 'facilityTypeGroup',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
@@ -159,8 +156,7 @@ export const FORM_DATA_USER_ADD = [
             keyMap: 'type',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_INPUT,
@@ -168,7 +164,7 @@ export const FORM_DATA_USER_ADD = [
         label: 'captions.CaseData.healthFacilityDetails',
         newLine: true,
         validation: ['required'],
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'address.facility',
         dependingOnValues: ['OTHER_FACILITY'],
       },
@@ -197,7 +193,6 @@ export const FORM_DATA_USER_ADD = [
         ...FORM_DATA_INPUT,
         key: 'location.houseNumber',
         label: 'captions.Facility.houseNumber',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -209,7 +204,6 @@ export const FORM_DATA_USER_ADD = [
         ...FORM_DATA_INPUT,
         key: 'location.postalCode',
         label: 'captions.Facility.postalCode',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,

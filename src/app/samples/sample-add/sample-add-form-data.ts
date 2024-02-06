@@ -50,6 +50,8 @@ export const FORM_DATA_SAMPLE_ADD = [
         ...FORM_DATA_DATETIME,
         label: 'captions.ExternalMessage.sampleDateTime',
         key: 'sampleDateTime',
+        className: 'fullwidth size-large',
+
       },
       {
         ...FORM_DATA_SELECT,
@@ -57,7 +59,6 @@ export const FORM_DATA_SAMPLE_ADD = [
         label: 'captions.Sample.sampleMaterial',
         validation: ['required'],
         options: optionsSampleTypes,
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -72,7 +73,6 @@ export const FORM_DATA_SAMPLE_ADD = [
         label: 'captions.Sample.samplingReason',
         validation: ['required'],
         options: optionsSampleReasons,
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -85,14 +85,12 @@ export const FORM_DATA_SAMPLE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'fieldSampleID',
         label: 'captions.Sample.fieldSampleID',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'lab',
         label: 'captions.Sample.lab',
         options: optionsLab,
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,

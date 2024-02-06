@@ -1,20 +1,20 @@
 import {
-  FORM_DATA_DATE,
-  FORM_DATA_INPUT,
-  FORM_DATA_SELECT,
-  FORM_DATA_NULL,
   ArmedForcesRelationType,
   CauseOfDeath,
   DeathPlaceType,
   EducationType,
+  FORM_DATA_DATE,
+  FORM_DATA_INPUT,
+  FORM_DATA_NULL,
+  FORM_DATA_SELECT,
   OccupationType,
   PresentCondition,
   Salutation,
   Sex,
 } from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -182,7 +182,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'captions.Person.armedForcesRelationType',
         options: optionsArmedForces,
         className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -190,7 +189,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'captions.Person.educationType',
         options: optionsEducation,
         className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -266,7 +264,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'citizenship',
         label: 'captions.Person.citizenship',
         options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
-        newLine: true,
       },
       {
         ...FORM_DATA_WIDGET,

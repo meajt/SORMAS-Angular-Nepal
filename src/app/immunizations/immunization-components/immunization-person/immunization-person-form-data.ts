@@ -1,20 +1,20 @@
 import {
-  FORM_DATA_DATE,
-  FORM_DATA_INPUT,
-  FORM_DATA_SELECT,
-  FORM_DATA_NULL,
   ArmedForcesRelationType,
   CauseOfDeath,
   DeathPlaceType,
   EducationType,
+  FORM_DATA_DATE,
+  FORM_DATA_INPUT,
+  FORM_DATA_NULL,
+  FORM_DATA_SELECT,
   OccupationType,
   PresentCondition,
   Salutation,
   Sex,
 } from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -142,19 +142,16 @@ export const FORM_DATA_IMMUNIZATION_PERSON_DETAILS = [
         key: 'passportNumber',
         label: 'captions.Person.passportNumber',
         newLine: true,
-        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'healthId',
         label: 'captions.Person.nationalHealthId',
-        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'externalToken',
         label: 'captions.Person.externalToken',
-        className: 'size-large',
       },
     ],
   },
@@ -167,13 +164,11 @@ export const FORM_DATA_IMMUNIZATION_PERSON_DETAILS = [
         key: 'occupationType',
         label: 'captions.Person.occupationType',
         options: optionsOccupationType,
-        className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'occupationDetails',
         label: 'captions.Person.occupationDetails',
-        className: 'size-large',
         dependingOn: 'occupationType',
       },
       {
@@ -181,22 +176,17 @@ export const FORM_DATA_IMMUNIZATION_PERSON_DETAILS = [
         key: 'staffOfArmedForces',
         label: 'captions.Person.armedForcesRelationType',
         options: optionsArmedForces,
-        className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'educationType',
         label: 'captions.Person.educationType',
         options: optionsEducation,
-        className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'educationDetailes',
         label: 'captions.Person.educationDetails',
-        className: 'size-large',
         dependingOn: 'educationType',
       },
     ],
@@ -259,14 +249,12 @@ export const FORM_DATA_IMMUNIZATION_PERSON_DETAILS = [
         label: 'captions.Person.birthCountry',
         service: 'countryService',
         options: [],
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'citizenship',
         label: 'captions.Person.citizenship',
         options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
-        newLine: true,
       },
     ],
   },

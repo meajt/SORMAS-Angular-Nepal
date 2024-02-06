@@ -16,7 +16,7 @@
 
     th.mat-header-cell {
       border-bottom-color: inherit;
-      border-left: 1px solid mat.get-color-from-palette(mat.define-palette($accent, 300));
+      border-left: 2px solid mat.get-color-from-palette(mat.define-palette($accent, 300));
       background-color: mat.get-color-from-palette(mat.define-palette($accent, 50));
       font-size: 1rem;
       white-space: nowrap;

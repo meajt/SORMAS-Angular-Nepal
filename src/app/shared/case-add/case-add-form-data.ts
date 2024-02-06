@@ -1,19 +1,19 @@
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
+  AreaType,
+  CaseOrigin,
+  Disease,
+  FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  Disease,
+  FORM_DATA_WIDGET,
   PlaceOfStay,
+  PointOfEntryType,
   PresentCondition,
   Sex,
-  CaseOrigin,
-  FORM_DATA_CHECKBOX,
-  FORM_DATA_WIDGET,
-  AreaType,
-  PointOfEntryType,
 } from '../../app.constants';
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -51,7 +51,6 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.disease',
         validation: ['required'],
         options: optionsDisease,
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -131,7 +130,6 @@ export const FORM_DATA_CASE_ADD = [
           },
         ],
         validation: ['required'],
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -143,13 +141,11 @@ export const FORM_DATA_CASE_ADD = [
             key: 'district.uuid',
           },
         ],
-        newLine: true,
       },
       {
         ...FORM_DATA_CHECKBOX,
         key: 'differentPlaceOfStayJurisdiction',
         label: 'captions.CaseData.differentPlaceOfStayJurisdiction',
-        newLine: true,
       },
     ],
   },
@@ -170,7 +166,6 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.region',
         service: 'regionService',
         validation: ['required'],
-        newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
@@ -185,7 +180,6 @@ export const FORM_DATA_CASE_ADD = [
           },
         ],
         validation: ['required'],
-        newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
@@ -199,7 +193,6 @@ export const FORM_DATA_CASE_ADD = [
             keyMap: 'district.uuid',
           },
         ],
-        newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
@@ -210,7 +203,7 @@ export const FORM_DATA_CASE_ADD = [
         service: 'helperService',
         serviceMethod: 'getFacilityCategories',
         newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['FACILITY'],
       },
@@ -226,8 +219,7 @@ export const FORM_DATA_CASE_ADD = [
             key: 'facilityTypeGroup',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['FACILITY'],
       },
@@ -258,8 +250,7 @@ export const FORM_DATA_CASE_ADD = [
             keyMap: 'type',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['FACILITY'],
       },
@@ -267,7 +258,6 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
         label: 'captions.CaseData.healthFacilityDetails',
-        newLine: true,
         validation: ['required'],
         className: 'size-large',
         dependingOn: 'facility',
@@ -277,7 +267,6 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'placeOfStatyDetails',
         label: 'captions.CaseData.noneHealthFacilityDetails',
-        newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['HOME'],

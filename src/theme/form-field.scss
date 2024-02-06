@@ -42,7 +42,7 @@
     .mat-form-field-appearance-fill {
       &.mat-form-field {
         display: block;
-        margin: 0.5rem 0;
+        margin: 10px 0;
       }
 
       .mat-form-field-flex {
@@ -249,13 +249,7 @@
           transform: none !important;
         }
 
-        .mat-form-field-outline-start {
-          border-radius: 4px 0 0 4px;
-        }
 
-        .mat-form-field-outline-end {
-          border-radius: 0 4px 4px 0;
-        }
 
         &:not(.mat-form-field-disabled, .mat-form-field-invalid) .mat-form-field-outline {
           color: currentColor;
