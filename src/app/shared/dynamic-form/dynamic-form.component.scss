@@ -38,11 +38,9 @@ fieldset {
 
   &.card {
     display: flex;
-
+    flex-direction: column;
     &:hover,
     &:focus {
-      background-color: rgba($white, 0.8);
-
       .mat-card {
         @include mat.elevation(6);
       }
@@ -56,15 +54,13 @@ fieldset {
 
 legend {
   flex: 0 0 176px;
-  padding: 16px;
+  padding: 12px;
   margin: 0;
-  float: left;
-  text-align: right;
 
   h2 {
     padding: 4px 0;
     margin: 0;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 16px;
   }
 
@@ -92,7 +88,7 @@ legend {
 }
 
 .size-medium {
-  width: 230px;
+  width: 220px;
 }
 
 .size-large {
@@ -148,7 +144,7 @@ legend {
   }
 
   legend {
-    padding: 24px;
+    padding: 12px;
   }
 
   .columns-md-2 .dynamic-form-card {

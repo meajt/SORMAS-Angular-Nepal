@@ -1,8 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { asyncScheduler, Subject, Subscription } from 'rxjs';
-import { NavigationEnd, Router } from '@angular/router';
 import { MatTabNav } from '@angular/material/tabs';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subject, Subscription, asyncScheduler } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import { HelperService } from '../../_services/helper.service';
 
@@ -15,19 +15,19 @@ export interface RouteItem {
 
 export const routesConfig: RouteItem[] = [
   { link: '', label: 'captions.mainMenuDashboard', selectedLink: 'dashboard' },
-  { link: 'tasks/list', label: 'captions.mainMenuTasks', selectedLink: 'tasks' },
+  // { link: 'tasks/list', label: 'captions.mainMenuTasks', selectedLink: 'tasks' },
   { link: 'cases/list', label: 'captions.mainMenuCases', selectedLink: 'cases' },
-  { link: 'msers/list', label: 'captions.mainMenuAggregateReports', selectedLink: 'msers' },
-  { link: 'events/list', label: 'captions.mainMenuEvents', selectedLink: 'events' },
+  // { link: 'msers/list', label: 'captions.mainMenuAggregateReports', selectedLink: 'msers' },
+  // { link: 'events/list', label: 'captions.mainMenuEvents', selectedLink: 'events' },
   { link: 'contacts/list', label: 'captions.mainMenuContacts', selectedLink: 'contacts' },
   { link: 'samples/list', label: 'captions.mainMenuSamples', selectedLink: 'samples' },
-  {
-    link: 'messages/list',
-    label: 'captions.mainMenuExternalMessages',
-    selectedLink: 'messages',
-  },
-  { link: 'shares/list', label: 'captions.mainMenuShareRequests', selectedLink: 'shares' },
-  { link: 'entries/list', label: 'captions.mainMenuEntries', selectedLink: 'entries' },
+  // {
+  //   link: 'messages/list',
+  //   label: 'captions.mainMenuExternalMessages',
+  //   selectedLink: 'messages',
+  // },
+  // { link: 'shares/list', label: 'captions.mainMenuShareRequests', selectedLink: 'shares' },
+  // { link: 'entries/list', label: 'captions.mainMenuEntries', selectedLink: 'entries' },
   { link: 'reports/list', label: 'captions.mainMenuReports', selectedLink: 'reports' },
   {
     link: 'immunizations/list',
@@ -35,7 +35,7 @@ export const routesConfig: RouteItem[] = [
     selectedLink: 'immunizations',
   },
   { link: 'stats', label: 'captions.mainMenuStatistics', selectedLink: 'stats' },
-  { link: 'persons/list', label: 'captions.mainMenuPersons', selectedLink: 'persons' },
+  // { link: 'persons/list', label: 'captions.mainMenuPersons', selectedLink: 'persons' },
   { link: 'users/list', label: 'captions.mainMenuUsers', selectedLink: 'users' },
 ];
 

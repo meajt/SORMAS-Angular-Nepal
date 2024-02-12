@@ -1,20 +1,20 @@
 import {
-  FORM_DATA_DATE,
-  FORM_DATA_INPUT,
-  FORM_DATA_SELECT,
-  FORM_DATA_NULL,
   ArmedForcesRelationType,
   CauseOfDeath,
   DeathPlaceType,
   EducationType,
+  FORM_DATA_DATE,
+  FORM_DATA_INPUT,
+  FORM_DATA_NULL,
+  FORM_DATA_SELECT,
   OccupationType,
   PresentCondition,
   Salutation,
   Sex,
 } from '../../../app.constants';
 
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import { FORM_DATA_WIDGET } from '../../../_constants/form-data';
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -52,12 +52,12 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'captions.lastName',
         validation: ['required'],
       },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'salutation',
-        label: 'captions.Person.salutation',
-        options: optionsSalutation,
-      },
+      // {
+      //   ...FORM_DATA_SELECT,
+      //   key: 'salutation',
+      //   label: 'captions.Person.salutation',
+      //   options: optionsSalutation,
+      // },
       {
         ...FORM_DATA_SELECT,
         key: 'year',
@@ -65,7 +65,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         placeholder: 'strings.year',
         options: [],
         className: 'size-small',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -95,7 +94,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'presentCondition',
         label: 'captions.Person.presentCondition',
         options: optionsPresentCondition,
-        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
@@ -111,7 +109,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'causeOfDeath',
         label: 'captions.Person.causeOfDeath',
         options: optionsCauseOfDeath,
-        newLine: true,
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
@@ -127,7 +124,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         key: 'deathPlaceType',
         label: 'captions.Person.deathPlaceType',
         options: optionsDeathPlaceType,
-        newLine: true,
         dependingOn: 'presentCondition',
         dependingOnValues: ['DEAD', 'BURIED'],
       },
@@ -137,25 +133,25 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'captions.Person.deathPlaceDescription',
         dependingOn: 'deathPlaceType',
       },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'passportNumber',
-        label: 'captions.Person.passportNumber',
-        newLine: true,
-        className: 'size-large',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'healthId',
-        label: 'captions.Person.nationalHealthId',
-        className: 'size-large',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'externalToken',
-        label: 'captions.Person.externalToken',
-        className: 'size-large',
-      },
+      // {
+      //   ...FORM_DATA_INPUT,
+      //   key: 'passportNumber',
+      //   label: 'captions.Person.passportNumber',
+      //   newLine: true,
+      //   className: 'size-large',
+      // },
+      // {
+      //   ...FORM_DATA_INPUT,
+      //   key: 'healthId',
+      //   label: 'captions.Person.nationalHealthId',
+      //   className: 'size-large',
+      // },
+      // {
+      //   ...FORM_DATA_INPUT,
+      //   key: 'externalToken',
+      //   label: 'captions.Person.externalToken',
+      //   className: 'size-large',
+      // },
     ],
   },
   {
@@ -182,7 +178,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'captions.Person.armedForcesRelationType',
         options: optionsArmedForces,
         className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -190,7 +185,6 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         label: 'captions.Person.educationType',
         options: optionsEducation,
         className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -203,7 +197,7 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
   },
   {
     id: 'address',
-    title: 'captions.Person.addresses',
+    title: 'captions.Person.address',
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -226,13 +220,12 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'mothersName',
         label: 'captions.Person.mothersName',
-        newLine: true,
       },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'mothersMaidenName',
-        label: 'captions.Person.mothersMaidenName',
-      },
+      // {
+      //   ...FORM_DATA_INPUT,
+      //   key: 'mothersMaidenName',
+      //   label: 'captions.Person.mothersMaidenName',
+      // },
       {
         ...FORM_DATA_INPUT,
         key: 'fathersName',
@@ -242,32 +235,30 @@ export const FORM_DATA_CASE_PERSON_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'phoneNumber',
         label: 'captions.Person.phone',
-        newLine: true,
       },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'ownerOfPhone',
-        label: 'captions.Person.phoneOwner',
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'email',
-        label: 'captions.Person.emailAddress',
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'countryOfBirth',
-        label: 'captions.Person.birthCountry',
-        options: [{ key: 'defaultCountry', value: 'Default country' }],
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'citizenship',
-        label: 'captions.Person.citizenship',
-        options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
-        newLine: true,
-      },
+      // {
+      //   ...FORM_DATA_INPUT,
+      //   key: 'ownerOfPhone',
+      //   label: 'captions.Person.phoneOwner',
+      // },
+      // {
+      //   ...FORM_DATA_INPUT,
+      //   key: 'email',
+      //   label: 'captions.Person.emailAddress',
+      // },
+      // {
+      //   ...FORM_DATA_SELECT,
+      //   key: 'countryOfBirth',
+      //   label: 'captions.Person.birthCountry',
+      //   options: [{ key: 'defaultCountry', value: 'Default country' }],
+      //   newLine: true,
+      // },
+      // {
+      //   ...FORM_DATA_SELECT,
+      //   key: 'citizenship',
+      //   label: 'captions.Person.citizenship',
+      //   options: [{ key: 'defaultCitizenship', value: 'Default citizenship' }],
+      // },
       {
         ...FORM_DATA_WIDGET,
         widget: 'app-case-person-contacts-list',

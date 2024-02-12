@@ -39,7 +39,6 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         label: 'captions.Immunization.meansOfImmunization',
         options: meansOfImmunizationOptions,
         validation: ['required'],
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -52,7 +51,6 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_DATE,
         key: 'startDate',
         label: 'captions.Immunization.startDate',
-        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
@@ -63,7 +61,6 @@ export const FORM_DATA_IMMUNIZATION_PROFILE = [
         ...FORM_DATA_DATE,
         key: 'validFrom',
         label: 'captions.Immunization.validFrom',
-        newLine: true,
       },
       {
         ...FORM_DATA_DATE,

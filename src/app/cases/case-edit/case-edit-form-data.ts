@@ -1,13 +1,13 @@
 import {
+  CaseClassification,
+  CaseOutcome,
+  Disease,
+  FORM_DATA_CHECKBOX,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  Disease,
-  PlaceOfStay,
-  FORM_DATA_CHECKBOX,
-  CaseClassification,
   InvestigationStatus,
-  CaseOutcome,
+  PlaceOfStay,
 } from '../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';

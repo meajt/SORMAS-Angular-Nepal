@@ -94,3 +94,4 @@ export const FORM_DATA_WIDGET = {
   ...FORM_DATA_BASE,
   controlType: 'widget',
 };
+

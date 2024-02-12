@@ -1,8 +1,8 @@
 import {
-  MeansOfImmunization,
   Disease,
   ImmunizationManagementStatus,
   ImmunizationStatus,
+  MeansOfImmunization,
   Sex,
 } from '../../_constants/enums';
 import {
@@ -35,7 +35,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'disease',
-        newLine: true,
+        newLine: false,
         label: 'captions.Immunization.disease',
         options: diseaseOptions,
         validation: ['required'],
@@ -46,7 +46,7 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         label: 'captions.Immunization.meansOfImmunization',
         options: meansOfImmunizationOptions,
         validation: ['required'],
-        newLine: true,
+        newLine: false,
       },
       {
         ...FORM_DATA_INPUT,
@@ -66,7 +66,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         ...FORM_DATA_DATE,
         key: 'startDate',
         label: 'captions.Immunization.startDate',
-        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
@@ -77,7 +76,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         ...FORM_DATA_DATE,
         key: 'validFrom',
         label: 'captions.Immunization.validFrom',
-        newLine: true,
       },
       {
         ...FORM_DATA_DATE,
@@ -133,7 +131,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         label: 'captions.Immunization.responsibleRegion',
         service: 'regionService',
         required: true,
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -147,7 +144,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
           },
         ],
         required: true,
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -161,7 +157,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
           },
         ],
         required: true,
-        newLine: true,
       },
     ],
   },
@@ -187,7 +182,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
             key: 'facilityTypeGroup',
           },
         ],
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -217,7 +211,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
             keyMap: 'type',
           },
         ],
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -279,13 +272,11 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         options: optionsSex,
         validation: ['required'],
         className: 'size-small',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'person.nationalHealthId',
         label: 'captions.Person.nationalHealthId',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -296,7 +287,6 @@ export const FORM_DATA_IMMUNIZATION_ADD = [
         ...FORM_DATA_INPUT,
         key: 'person.phone',
         label: 'captions.Person.phone',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,

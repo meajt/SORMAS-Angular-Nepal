@@ -1,28 +1,27 @@
 import {
+  CaseClassification,
+  CaseIdentificationSource,
+  CaseOutcome,
+  Disease,
   FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
-  FORM_DATA_RADIO,
-  FORM_DATA_SELECT,
-  FORM_DATA_TEXTAREA,
   FORM_DATA_NULL,
   FORM_DATA_NUMBER,
+  FORM_DATA_RADIO,
+  FORM_DATA_SELECT,
   FORM_DATA_WIDGET,
-  CaseClassification,
+  InfectionSetting,
   InvestigationStatus,
-  CaseOutcome,
-  Disease,
-  YesNoUnknown,
   PlaceOfStay,
   QuarantineType,
-  VaccinationStatus,
-  VaccinationInfoSource,
-  VaccineName,
-  VaccineManufacturer,
-  CaseIdentificationSource,
   ScreeningType,
-  InfectionSetting,
   Trimester,
+  VaccinationInfoSource,
+  VaccinationStatus,
+  VaccineManufacturer,
+  VaccineName,
+  YesNoUnknown
 } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
@@ -59,6 +58,14 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'reportDate',
         validation: ['required'],
       },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'epidNumber',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-new-epid-number',
+      },
     ],
   },
   {
@@ -83,39 +90,32 @@ export const FORM_DATA_CASE_DETAILS = [
         },
         className: 'push-bottom',
       },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-calculate-case-classification',
-        key: 'uuid',
-        className: 'push-right',
-      },
+
       {
         ...FORM_DATA_SELECT,
         key: 'clinicalConfirmation',
         label: 'captions.CaseData.clinicalConfirmation',
         options: optionsYesNoUnknown,
-        newLine: true,
-        className: 'size-small',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'epidemiologicalConfirmation',
         label: 'captions.CaseData.epidemiologicalConfirmation',
         options: optionsYesNoUnknown,
-        className: 'size-small',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'laboratoryDiagnosticConfirmation',
         label: 'captions.CaseData.laboratoryDiagnosticConfirmation',
         options: optionsYesNoUnknown,
-        className: 'size-small',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_DATE,
         key: 'classificationDate',
         label: 'captions.CaseData.classificationDate',
-        newLine: true,
         className: 'size-medium',
       },
       {
@@ -123,6 +123,12 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'classificationUser.caption',
         label: 'captions.CaseData.classificationUser',
         dependingOn: 'classificationUser.caption',
+      },
+      {
+        ...FORM_DATA_WIDGET,
+        widget: 'app-calculate-case-classification',
+        key: 'uuid',
+        newLine: true,
       },
     ],
   },
@@ -151,6 +157,7 @@ export const FORM_DATA_CASE_DETAILS = [
     id: 'externalData',
     title: 'CaseData.externalData',
     required: true,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_INPUT,
@@ -180,25 +187,34 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'diseaseVariant.uuid',
         label: 'captions.CaseData.diseaseVariant',
-        options: optionsDisese,
+        options: [
+          {
+            key: 'MB',
+            value: 'MB',
+          },
+          {
+            key: 'PB',
+            value: 'PB',
+          },
+        ],
       },
     ],
   },
-  {
-    id: 'epidNumber',
-    title: 'captions.CaseData.epidNumber',
-    required: false,
-    fields: [
-      {
-        ...FORM_DATA_INPUT,
-        key: 'epidNumber',
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-new-epid-number',
-      },
-    ],
-  },
+  // {
+  //   id: 'epidNumber',
+  //   title: 'captions.CaseData.epidNumber',
+  //   required: false,
+  //   fields: [
+  //     {
+  //       ...FORM_DATA_INPUT,
+  //       key: 'epidNumber',
+  //     },
+  //     {
+  //       ...FORM_DATA_WIDGET,
+  //       widget: 'app-new-epid-number',
+  //     },
+  //   ],
+  // },
   {
     id: 'caseOutcome',
     title: 'captions.CaseData.outcome',
@@ -241,6 +257,7 @@ export const FORM_DATA_CASE_DETAILS = [
   {
     id: 'source',
     title: 'CaseData.source',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -258,7 +275,6 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'caseIdentificationSource',
         label: 'captions.CaseData.caseIdentificationSource',
         options: optionsCaseIdentificationSource,
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -272,18 +288,19 @@ export const FORM_DATA_CASE_DETAILS = [
   },
   {
     id: 'caseOrigin',
-    title: 'captions.CaseData.caseOrigin',
+    title: 'strings.Address',
     required: false,
     fields: [
       {
         ...FORM_DATA_NULL,
         key: 'caseOrigin',
         newLine: true,
+        className: 'hidden',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleRegion.uuid',
-        label: 'captions.CaseData.responsibleRegion',
+        label: 'captions.CaseData.province',
         service: 'regionService',
         required: true,
         dependingOn: 'caseOrigin',
@@ -294,6 +311,7 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_SELECT,
         key: 'responsibleDistrict.uuid',
         service: 'districtService',
+        label: 'captions.CaseData.district',
         determinedBy: [
           {
             key: 'responsibleRegion.uuid',
@@ -303,12 +321,12 @@ export const FORM_DATA_CASE_DETAILS = [
         required: true,
         dependingOn: 'caseOrigin',
         dependingOnValues: ['IN_COUNTRY'],
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'responsibleCommunity.uuid',
         service: 'communityService',
+        label: 'captions.CaseData.municipality',
         determinedBy: [
           {
             key: 'responsibleDistrict.uuid',
@@ -318,8 +336,30 @@ export const FORM_DATA_CASE_DETAILS = [
         required: true,
         dependingOn: 'caseOrigin',
         dependingOnValues: ['IN_COUNTRY'],
-        newLine: true,
       },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'wardNo',
+        label: 'captions.CaseData.wardNo',
+        required: true,
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['IN_COUNTRY'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'pointOfEntry',
+        label: 'captions.CaseData.pointOfEntry',
+        options: [
+          {
+            key: 'POINT_OF_ENTRY',
+            value: 'captions.CaseData.pointOfEntry',
+          },
+        ],
+        dependingOn: 'caseOrigin',
+        dependingOnValues: ['POINT_OF_ENTRY'],
+      },
+
+
       {
         ...FORM_DATA_NULL,
         key: 'pointOfEntry.caption',
@@ -346,6 +386,7 @@ export const FORM_DATA_CASE_DETAILS = [
         key: 'placeOfStaty',
         validation: ['required'],
         options: optionsPlaceOfStay,
+        value: 'FACILITY',
       },
       {
         ...FORM_DATA_SELECT,
@@ -371,7 +412,6 @@ export const FORM_DATA_CASE_DETAILS = [
             key: 'facilityTypeGroup',
           },
         ],
-        newLine: true,
         className: 'size-large',
         dependingOn: 'placeOfStaty',
         dependingOnValues: ['FACILITY'],
@@ -404,7 +444,6 @@ export const FORM_DATA_CASE_DETAILS = [
             keyMap: 'type',
           },
         ],
-        newLine: true,
         className: 'size-large',
         dependingOn: 'placeOfStaty',
         dependingOnValues: ['FACILITY'],
@@ -414,7 +453,6 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
         label: 'captions.CaseData.healthFacilityDetails',
-        newLine: true,
         className: 'size-large',
         dependingOn: 'facility',
         dependingOnValues: ['OTHER_FACILITY'],
@@ -423,7 +461,6 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'placeOfStatyDetails',
         label: 'captions.CaseData.noneHealthFacilityDetails',
-        newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStaty',
         dependingOnValues: ['HOME'],
@@ -434,6 +471,7 @@ export const FORM_DATA_CASE_DETAILS = [
     id: 'quarantine',
     title: 'captions.CaseData.quarantine',
     required: false,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -564,31 +602,30 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'reportLon',
         label: 'captions.CaseData.reportLon',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
         key: 'reportLatLonAccuracy',
         label: 'captions.CaseData.reportLatLonAccuracy',
-        newLine: true,
       },
     ],
   },
-  {
-    id: 'donation',
-    title: 'CaseData.donation',
-    required: false,
-    anchor: 'additional_information',
-    anchorLabel: 'CaseData.additionalInfo',
-    fields: [
-      {
-        ...FORM_DATA_RADIO,
-        key: 'bloodOrganOrTissueDonated',
-        label: 'captions.CaseData.bloodOrganOrTissueDonated',
-        options: optionsYesNoUnknown,
-      },
-    ],
-  },
+  // {
+  //   id: 'donation',
+  //   title: 'CaseData.donation',
+  //   required: false,
+  //   anchor: 'additional_information',
+  //   anchorLabel: 'CaseData.additionalInfo',
+  //   hidden: true,
+  //   fields: [
+  //     {
+  //       ...FORM_DATA_RADIO,
+  //       key: 'bloodOrganOrTissueDonated',
+  //       label: 'captions.CaseData.bloodOrganOrTissueDonated',
+  //       options: optionsYesNoUnknown,
+  //     },
+  //   ],
+  // },
   {
     id: 'infection',
     title: 'CaseData.infection',
@@ -655,6 +692,7 @@ export const FORM_DATA_CASE_DETAILS = [
     id: 'vaccination',
     title: 'headingVaccination',
     required: false,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -776,6 +814,7 @@ export const FORM_DATA_CASE_DETAILS = [
     id: 'surveillance',
     title: 'CaseData.surveillance',
     required: false,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -793,108 +832,106 @@ export const FORM_DATA_CASE_DETAILS = [
         ...FORM_DATA_INPUT,
         key: 'clinicianName',
         label: 'captions.CaseData.clinicianName',
-        newLine: true,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianPhone',
         label: 'captions.CaseData.clinicianPhone',
-        newLine: true,
         className: 'size-large',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'clinicianEmail',
         label: 'captions.CaseData.clinicianEmail',
-        newLine: true,
         className: 'size-large',
       },
     ],
   },
-  {
-    id: 'followupStatus',
-    title: '',
-    required: false,
-    anchor: 'followup_status',
-    anchorLabel: 'captions.CaseData.followUpStatus',
-    fields: [
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-follow-up-status',
-        key: 'followUpStatus',
-        className: 'fullwidth',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'followUpUntil',
-        label: 'captions.CaseData.followUpUntil',
-        className: 'size-medium follow-up-date',
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'expectedFollowUpUntil',
-        label: 'captions.CaseData.expectedFollowUpUntil',
-        className: 'size-medium follow-up-date',
-        disabled: true,
-      },
-      {
-        ...FORM_DATA_CHECKBOX,
-        key: 'overwriteFollowUpUntil',
-        label: 'captions.CaseData.overwriteFollowUpUntil',
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_INPUT,
-        key: 'followUpComment',
-        label: 'captions.CaseData.followUpComment',
-        newLine: true,
-        className: 'size-full',
-      },
-    ],
-  },
-  {
-    id: 'paperForm',
-    title: '',
-    required: false,
-    anchor: 'paper_form',
-    anchorLabel: 'CaseData.paperForm',
-    fields: [
-      {
-        ...FORM_DATA_DATE,
-        key: 'districtLevelDate',
-        label: 'captions.CaseData.districtLevelDate',
-        className: 'size-medium',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'regionLevelDate',
-        label: 'captions.CaseData.regionLevelDate',
-        newLine: true,
-        className: 'size-medium',
-      },
-      {
-        ...FORM_DATA_DATE,
-        key: 'nationalLevelDate',
-        label: 'captions.CaseData.nationalLevelDate',
-        newLine: true,
-        className: 'size-medium',
-      },
-    ],
-  },
-  {
-    id: 'comment',
-    title: '',
-    required: false,
-    anchor: 'general_comment',
-    anchorLabel: 'captions.CaseData.additionalDetails',
-    fields: [
-      {
-        ...FORM_DATA_TEXTAREA,
-        key: 'additionalDetails',
-        label: 'CaseData.yourCommentHere',
-      },
-    ],
-  },
+  // {
+  //   id: 'followupStatus',
+  //   title: '',
+  //   required: false,
+  //   anchor: 'followup_status',
+  //   anchorLabel: 'captions.CaseData.followUpStatus',
+  //   hidden: true,
+  //   fields: [
+  //     {
+  //       ...FORM_DATA_WIDGET,
+  //       widget: 'app-follow-up-status',
+  //       key: 'followUpStatus',
+  //       className: 'fullwidth',
+  //     },
+  //     {
+  //       ...FORM_DATA_DATE,
+  //       key: 'followUpUntil',
+  //       label: 'captions.CaseData.followUpUntil',
+  //       className: 'size-medium follow-up-date',
+  //       newLine: true,
+  //     },
+  //     {
+  //       ...FORM_DATA_DATE,
+  //       key: 'expectedFollowUpUntil',
+  //       label: 'captions.CaseData.expectedFollowUpUntil',
+  //       className: 'size-medium follow-up-date',
+  //       disabled: true,
+  //     },
+  //     {
+  //       ...FORM_DATA_CHECKBOX,
+  //       key: 'overwriteFollowUpUntil',
+  //       label: 'captions.CaseData.overwriteFollowUpUntil',
+  //       newLine: true,
+  //     },
+  //     {
+  //       ...FORM_DATA_INPUT,
+  //       key: 'followUpComment',
+  //       label: 'captions.CaseData.followUpComment',
+  //       newLine: true,
+  //       className: 'size-full',
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 'paperForm',
+  //   title: 'Paper Form',
+  //   required: false,
+  //   anchor: 'paper_form',
+  //   anchorLabel: 'CaseData.paperForm',
+  //   hidden: true,
+  //   fields: [
+  //     {
+  //       ...FORM_DATA_DATE,
+  //       key: 'districtLevelDate',
+  //       label: 'captions.CaseData.districtLevelDate',
+  //       className: 'size-large ',
+  //     },
+  //     {
+  //       ...FORM_DATA_DATE,
+  //       key: 'regionLevelDate',
+  //       label: 'captions.CaseData.regionLevelDate',
+  //       className: 'size-large ',
+  //     },
+  //     {
+  //       ...FORM_DATA_DATE,
+  //       key: 'nationalLevelDate',
+  //       label: 'captions.CaseData.nationalLevelDate',
+  //       className: 'size-large ',
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 'comment',
+  //   title: '',
+  //   required: false,
+  //   anchor: 'general_comment',
+  //   anchorLabel: 'captions.CaseData.additionalDetails',
+  //   hidden: true,
+  //   fields: [
+  //     {
+  //       ...FORM_DATA_TEXTAREA,
+  //       key: 'additionalDetails',
+  //       label: 'CaseData.yourCommentHere',
+  //     },
+  //   ],
+  // },
 ];

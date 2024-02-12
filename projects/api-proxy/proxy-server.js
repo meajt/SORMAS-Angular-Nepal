@@ -15,8 +15,8 @@ const API_SERVICE_URL = process.env.API_SERVICE_URL;
 
 app.use(
   cors({
-    origin: process.env.ANGULAR_ORIGIN,
-    credentials: true,
+    origin: "*",
+    // credentials: true,
   })
 );
 
@@ -2555,6 +2555,8 @@ app.use(
     secure: !process.env.IGNORE_CERT_VALIDATION,
     logLevel: 'debug',
     onProxyReq: (proxyReq, req, res) => {
+      console.log("request is ", req.path, req.params);
+      console.log(JSON.stringify(req.body));
       if (!req.body || !Object.keys(req.body).length) {
         return;
       }

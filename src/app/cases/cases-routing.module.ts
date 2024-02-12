@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CasesComponent } from './cases.component';
-import { CasesListComponent } from './cases-list/cases-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LeaveGuard } from '../_guards/leave-guard';
 import { CaseComponent } from './case/case.component';
-import { CaseDetailsComponent } from './case_components/case-details/case-details.component';
-import { CasePersonComponent } from './case_components/case-person/case-person.component';
-import { CaseHospitalizationComponent } from './case_components/case-hospitalization/case-hospitalization.component';
-import { CaseSymptomsComponent } from './case_components/case-symptoms/case-symptoms.component';
-import { CaseEpidemiologicalDataComponent } from './case_components/case-epidemiological-data/case-epidemiological-data.component';
-import { CaseTherapyComponent } from './case_components/case-therapy/case-therapy.component';
-import { CaseFollowUpComponent } from './case_components/case-follow-up/case-follow-up.component';
 import { CaseClinicalCourseComponent } from './case_components/case-clinical-course/case-clinical-course.component';
 import { CaseContactsComponent } from './case_components/case-contacts/case-contacts.component';
-import { LeaveGuard } from '../_guards/leave-guard';
+import { CaseDetailsComponent } from './case_components/case-details/case-details.component';
+import { CaseEpidemiologicalDataComponent } from './case_components/case-epidemiological-data/case-epidemiological-data.component';
+import { CaseFollowUpComponent } from './case_components/case-follow-up/case-follow-up.component';
+import { CaseHospitalizationComponent } from './case_components/case-hospitalization/case-hospitalization.component';
+import { CasePersonComponent } from './case_components/case-person/case-person.component';
 import { CasePortHealthComponent } from './case_components/case-port-health/case-port-health.component';
+import { CaseSymptomsComponent } from './case_components/case-symptoms/case-symptoms.component';
+import { CaseTherapyComponent } from './case_components/case-therapy/case-therapy.component';
+import { CasesListComponent } from './cases-list/cases-list.component';
+import { CasesComponent } from './cases.component';
 
 const routes: Routes = [
   {

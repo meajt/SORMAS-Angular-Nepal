@@ -1,19 +1,21 @@
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
+  AreaType,
+  CaseOrigin,
+  Disease,
+  FORM_DATA_CHECKBOX,
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  Disease,
+  FORM_DATA_WIDGET,
   PlaceOfStay,
+  PointOfEntryType,
   PresentCondition,
   Sex,
-  CaseOrigin,
-  FORM_DATA_CHECKBOX,
-  FORM_DATA_WIDGET,
-  AreaType,
-  PointOfEntryType,
+  yearOptions,
 } from '../../app.constants';
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { createUuid } from '../../util';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -44,6 +46,8 @@ export const FORM_DATA_CASE_ADD = [
         key: 'epidNumber',
         label: 'captions.CaseData.epidNumber',
         validation: ['required'],
+        value: createUuid(),
+        disabled: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -51,7 +55,7 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.disease',
         validation: ['required'],
         options: optionsDisease,
-        newLine: true,
+        value: 'LEPROSY',
       },
       {
         ...FORM_DATA_SELECT,
@@ -59,13 +63,18 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.diseaseVariant',
         options: [
           {
-            key: 'default',
-            value: 'default',
+            key: 'MB',
+            value: 'MB',
+          },
+          {
+            key: 'PB',
+            value: 'PB',
           },
         ],
+        value: 'MB',
         newLine: true,
         dependingOn: 'disease',
-        dependingOnValues: ['CORONAVIRUS'],
+        dependingOnValues: ['LEPROSY'],
       },
       {
         ...FORM_DATA_INPUT,
@@ -81,41 +90,44 @@ export const FORM_DATA_CASE_ADD = [
     id: 'caseOrigin',
     title: 'captions.CaseData.caseOrigin',
     required: true,
+    hidden: true,
+
     fields: [
       {
         ...FORM_DATA_RADIO,
         key: 'caseOrigin',
-        validation: ['required'],
         options: optionsCaseOrigin,
+        value: optionsCaseOrigin[0].key,
+        validation: ['required'],
       },
-      {
-        ...FORM_DATA_CHECKBOX,
-        key: 'pointOfEntryDiffer',
-        label: 'captions.CaseData.differentPointOfEntryJurisdiction',
-        newLine: true,
-      },
+      // {
+      //   ...FORM_DATA_CHECKBOX,
+      //   key: 'pointOfEntryDiffer',
+      //   label: 'captions.CaseData.differentPointOfEntryJurisdiction',
+      //   newLine: true,
+      // },
     ],
   },
   {
     id: 'responsibleJurisdiction',
-    title: 'strings.headingResponsibleJurisdiction',
+    title: 'strings.Address',
     fields: [
-      {
-        ...FORM_DATA_CHECKBOX,
-        key: 'dontShareWithReportingTool',
-        label: 'captions.CaseData.dontShareWithReportingTool',
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_WIDGET,
-        widget: 'app-add-case-label',
-        dependingOn: 'dontShareWithReportingTool',
-        className: 'fullwidth',
-      },
+      // {
+      //   ...FORM_DATA_CHECKBOX,
+      //   key: 'dontShareWithReportingTool',
+      //   label: 'captions.CaseData.dontShareWithReportingTool',
+      //   newLine: true,
+      // },
+      // {
+      //   ...FORM_DATA_WIDGET,
+      //   widget: 'app-add-case-label',
+      //   dependingOn: 'dontShareWithReportingTool',
+      //   className: 'fullwidth',
+      // },
       {
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
-        label: 'captions.CaseData.responsibleRegion',
+        label: 'captions.CaseData.province',
         service: 'regionService',
         validation: ['required'],
         newLine: true,
@@ -123,7 +135,7 @@ export const FORM_DATA_CASE_ADD = [
       {
         ...FORM_DATA_SELECT,
         key: 'district.uuid',
-        label: 'captions.CaseData.responsibleDistrict',
+        label: 'captions.CaseData.district',
         service: 'districtService',
         determinedBy: [
           {
@@ -131,32 +143,36 @@ export const FORM_DATA_CASE_ADD = [
           },
         ],
         validation: ['required'],
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
         key: 'community.uuid',
-        label: 'captions.CaseData.responsibleCommunity',
+        label: 'captions.CaseData.municipality',
         service: 'communityService',
         determinedBy: [
           {
             key: 'district.uuid',
           },
         ],
-        newLine: true,
       },
       {
-        ...FORM_DATA_CHECKBOX,
-        key: 'differentPlaceOfStayJurisdiction',
-        label: 'captions.CaseData.differentPlaceOfStayJurisdiction',
-        newLine: true,
+        ...FORM_DATA_INPUT,
+        key: 'ward.no',
+        label: 'captions.CaseData.wardNo',
       },
+
+      // {
+      //   ...FORM_DATA_CHECKBOX,
+      //   key: 'differentPlaceOfStayJurisdiction',
+      //   label: 'captions.CaseData.differentPlaceOfStayJurisdiction',
+      // },
     ],
   },
   {
     id: 'placeOfStay',
     title: 'captions.casePlaceOfStay',
     required: true,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -170,7 +186,6 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.CaseData.region',
         service: 'regionService',
         validation: ['required'],
-        newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
@@ -185,7 +200,6 @@ export const FORM_DATA_CASE_ADD = [
           },
         ],
         validation: ['required'],
-        newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
@@ -199,7 +213,6 @@ export const FORM_DATA_CASE_ADD = [
             keyMap: 'district.uuid',
           },
         ],
-        newLine: true,
         dependingOn: 'differentPlaceOfStayJurisdiction',
       },
       {
@@ -210,7 +223,7 @@ export const FORM_DATA_CASE_ADD = [
         service: 'helperService',
         serviceMethod: 'getFacilityCategories',
         newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['FACILITY'],
       },
@@ -226,8 +239,7 @@ export const FORM_DATA_CASE_ADD = [
             key: 'facilityTypeGroup',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['FACILITY'],
       },
@@ -258,8 +270,7 @@ export const FORM_DATA_CASE_ADD = [
             keyMap: 'type',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['FACILITY'],
       },
@@ -267,7 +278,6 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails',
         label: 'captions.CaseData.healthFacilityDetails',
-        newLine: true,
         validation: ['required'],
         className: 'size-large',
         dependingOn: 'facility',
@@ -277,7 +287,6 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'placeOfStatyDetails',
         label: 'captions.CaseData.noneHealthFacilityDetails',
-        newLine: true,
         className: 'size-full',
         dependingOn: 'placeOfStay',
         dependingOnValues: ['HOME'],
@@ -287,6 +296,7 @@ export const FORM_DATA_CASE_ADD = [
   {
     id: 'pointOfEntry',
     title: 'captions.CaseData.pointOfEntry',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -346,7 +356,7 @@ export const FORM_DATA_CASE_ADD = [
         key: 'year',
         label: 'captions.Person.birthdate',
         placeholder: 'strings.year',
-        options: [],
+        options: yearOptions,
         className: 'size-small',
         newLine: true,
       },
@@ -377,13 +387,13 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'healthId',
         label: 'captions.Person.nationalHealthId',
-        className: 'size-large',
+        className: 'size-large hidden',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'passportNumber',
         label: 'captions.Person.passportNumber',
-        className: 'size-large',
+        className: 'size-large hidden',
       },
       {
         ...FORM_DATA_INPUT,
@@ -403,6 +413,7 @@ export const FORM_DATA_CASE_ADD = [
   {
     id: 'health',
     title: 'headingHealth',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -421,6 +432,7 @@ export const FORM_DATA_CASE_ADD = [
   {
     id: 'homeAddress',
     title: 'captions.Person.address',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_CHECKBOX,
@@ -428,15 +440,15 @@ export const FORM_DATA_CASE_ADD = [
         label: 'captions.caseDataEnterHomeAddressNow',
         newLine: true,
       },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'person.country.uuid',
-        label: 'captions.Country',
-        service: 'countryService',
-        validation: ['required'],
-        newLine: true,
-        dependingOn: 'caseDataEnterHomeAddressNow',
-      },
+      // {
+      //   ...FORM_DATA_SELECT,
+      //   key: 'person.country.uuid',
+      //   label: 'captions.Country',
+      //   service: 'countryService',
+      //   validation: ['required'],
+      //   newLine: true,
+      //   dependingOn: 'caseDataEnterHomeAddressNow',
+      // },
       {
         ...FORM_DATA_SELECT,
         key: 'person.region.uuid',
@@ -464,13 +476,12 @@ export const FORM_DATA_CASE_ADD = [
           },
         ],
         validation: ['required'],
-        newLine: true,
         dependingOn: 'caseDataEnterHomeAddressNow',
       },
       {
         ...FORM_DATA_SELECT,
         key: 'person.community.uuid',
-        label: 'captions.CaseData.community',
+        label: 'captions.CaseData.municipality',
         service: 'communityService',
         determinedBy: [
           {
@@ -478,7 +489,6 @@ export const FORM_DATA_CASE_ADD = [
             keyMap: 'district.uuid',
           },
         ],
-        newLine: true,
         dependingOn: 'caseDataEnterHomeAddressNow',
       },
     ],
@@ -498,7 +508,7 @@ export const FORM_DATA_CASE_ADD = [
           },
         ],
         newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
@@ -510,8 +520,7 @@ export const FORM_DATA_CASE_ADD = [
             value: 'defaultRegion',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_SELECT,
@@ -523,14 +532,12 @@ export const FORM_DATA_CASE_ADD = [
             value: 'defaultRegion',
           },
         ],
-        newLine: true,
-        className: 'size-large',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'healthFacilityDetails2',
         label: 'captions.CaseData.healthFacilityDetails',
-        newLine: true,
         className: 'size-full',
       },
     ],
@@ -558,7 +565,6 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'location.houseNumber',
         label: 'captions.Facility.houseNumber',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -570,7 +576,6 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'location.postalCode',
         label: 'captions.Facility.postalCode',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -587,19 +592,19 @@ export const FORM_DATA_CASE_ADD = [
         ...FORM_DATA_INPUT,
         key: 'location.latitude',
         label: 'captions.Location.latitude',
-        className: 'size-small',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.longitude',
         label: 'captions.Location.longitude',
-        className: 'size-small',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_INPUT,
         key: 'location.latLonAccuracy',
         label: 'captions.Location.latLonAccuracy',
-        className: 'size-small',
+        className: 'size-medium',
       },
       {
         ...FORM_DATA_WIDGET,

@@ -1,6 +1,6 @@
-import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
+import { AreaType, PersonAddressType } from '../../_constants/enums';
 import { FORM_DATA_INPUT, FORM_DATA_SELECT, FORM_DATA_WIDGET } from '../../_constants/form-data';
-import { PersonAddressType, AreaType } from '../../_constants/enums';
+import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -28,7 +28,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         key: 'country.uuid',
         label: 'captions.country',
         service: 'countryService',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -51,7 +50,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
             key: 'region.uuid',
           },
         ],
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -74,7 +72,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         ...FORM_DATA_SELECT,
         key: 'facilityTypeGroup',
         label: 'captions.Facility.typeGroup',
-        className: 'size-large',
         service: 'helperService',
         serviceMethod: 'getFacilityCategories',
       },
@@ -90,8 +87,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
             key: 'facilityTypeGroup',
           },
         ],
-        className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -119,8 +114,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
             keyMap: 'type',
           },
         ],
-        className: 'size-large',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -157,7 +150,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         ...FORM_DATA_INPUT,
         key: 'houseNumber',
         label: 'captions.Location.houseNumber',
-        newLine: true,
       },
       {
         ...FORM_DATA_SELECT,
@@ -169,7 +161,6 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         ...FORM_DATA_INPUT,
         key: 'postalCode',
         label: 'captions.Location.postalCode',
-        newLine: true,
       },
       {
         ...FORM_DATA_INPUT,
@@ -186,19 +177,16 @@ export const FORM_DATA_ADDRESS_ADD_EDIT = [
         ...FORM_DATA_INPUT,
         label: 'captions.Location.latitude',
         key: 'latitude',
-        className: 'size-small',
       },
       {
         ...FORM_DATA_INPUT,
         label: 'captions.Location.longitude',
         key: 'longitude',
-        className: 'size-small',
       },
       {
         ...FORM_DATA_INPUT,
         label: 'captions.Location.latLonAccuracy',
         key: 'latLonAccuracy',
-        className: 'size-small',
       },
       {
         ...FORM_DATA_WIDGET,

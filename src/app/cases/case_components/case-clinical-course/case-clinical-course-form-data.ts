@@ -1,5 +1,5 @@
-import { FORM_DATA_RADIO, YesNoUnknown } from '../../../app.constants';
 import { FORM_DATA_TEXTAREA } from '../../../_constants/form-data';
+import { FORM_DATA_RADIO, YesNoUnknown } from '../../../app.constants';
 
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -11,6 +11,7 @@ export const FORM_DATA_CASE_CLINICAL_COURSE = [
   {
     id: 'conditions',
     title: 'strings.headingHealthConditions',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,

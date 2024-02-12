@@ -14,21 +14,21 @@ export const defaultColumnDefs: TableColumn[] = [
       truncate: 6,
     },
   },
-  {
-    name: 'captions.CaseData.externalID',
-    dataKey: 'externalID',
-    isSortable: true,
-  },
-  {
-    name: 'captions.CaseData.externalToken',
-    dataKey: 'externalToken',
-    isSortable: true,
-  },
-  {
-    name: 'captions.CaseData.internalToken',
-    dataKey: 'internalToken',
-    isSortable: true,
-  },
+  // {
+  //   name: 'captions.CaseData.externalID',
+  //   dataKey: 'externalID',
+  //   isSortable: true,
+  // },
+  // {
+  //   name: 'captions.CaseData.externalToken',
+  //   dataKey: 'externalToken',
+  //   isSortable: true,
+  // },
+  // {
+  //   name: 'captions.CaseData.internalToken',
+  //   dataKey: 'internalToken',
+  //   isSortable: true,
+  // },
   {
     name: 'captions.disease',
     dataKey: 'disease',
@@ -92,11 +92,11 @@ export const defaultColumnDefs: TableColumn[] = [
     dataKey: 'healthFacilityName',
     isSortable: true,
   },
-  {
-    name: 'captions.CaseData.pointOfEntryName',
-    dataKey: 'pointOfEntryName',
-    isSortable: true,
-  },
+  // {
+  //   name: 'captions.CaseData.pointOfEntryName',
+  //   dataKey: 'pointOfEntryName',
+  //   isSortable: true,
+  // },
   {
     name: 'captions.CaseData.reportDate',
     dataKey: 'reportDate',
@@ -107,26 +107,26 @@ export const defaultColumnDefs: TableColumn[] = [
       pattern: 'M/d/yyyy',
     },
   },
-  {
-    name: 'captions.CaseData.quarantineTo',
-    dataKey: 'quarantineTo',
-    align: 'right',
-    isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
-    },
-  },
-  {
-    name: 'captions.creationDate',
-    dataKey: 'creationDate',
-    align: 'right',
-    isSortable: true,
-    format: {
-      type: TableDataFormatOptions.DATE,
-      pattern: 'M/d/yyyy',
-    },
-  },
+  // {
+  //   name: 'captions.CaseData.quarantineTo',
+  //   dataKey: 'quarantineTo',
+  //   align: 'right',
+  //   isSortable: true,
+  //   format: {
+  //     type: TableDataFormatOptions.DATE,
+  //     pattern: 'M/d/yyyy',
+  //   },
+  // },
+  // {
+  //   name: 'captions.creationDate',
+  //   dataKey: 'creationDate',
+  //   align: 'right',
+  //   isSortable: true,
+  //   format: {
+  //     type: TableDataFormatOptions.DATE,
+  //     pattern: 'M/d/yyyy',
+  //   },
+  // },
   {
     name: 'captions.CaseData.followUpStatus',
     dataKey: 'followUpStatus',

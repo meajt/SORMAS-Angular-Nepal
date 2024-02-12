@@ -1,4 +1,11 @@
 import {
+  Trimester,
+  VaccinationInfoSource,
+  VaccineManufacturer,
+  VaccineName,
+  YesNoUnknown,
+} from '../../_constants/enums';
+import {
   FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_NULL,
@@ -6,13 +13,6 @@ import {
   FORM_DATA_SELECT,
   FORM_DATA_TEXTAREA,
 } from '../../_constants/form-data';
-import {
-  Trimester,
-  VaccinationInfoSource,
-  VaccineManufacturer,
-  VaccineName,
-  YesNoUnknown,
-} from '../../_constants/enums';
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
@@ -54,7 +54,6 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'vaccineName',
-        newLine: true,
         label: 'captions.Vaccination.vaccineName',
         options: vaccineNameOptions,
       },
@@ -68,7 +67,6 @@ export const FORM_DATA_VACCINATION_ADD_EDIT = [
       {
         ...FORM_DATA_SELECT,
         key: 'vaccineManufacturer',
-        newLine: true,
         label: 'captions.Vaccination.vaccineManufacturer',
         options: vaccineManufacturerOptions,
       },

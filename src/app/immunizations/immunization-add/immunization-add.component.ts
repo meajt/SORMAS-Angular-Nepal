@@ -11,7 +11,8 @@ import { PersonService } from '../../_services/api/person.service';
 import { Filter } from '../../_models/common';
 import { NotificationService } from '../../_services/notification.service';
 import { FormActionsService } from '../../_services/form-actions.service';
-
+import { createUuid } from 'src/app/util';
+import { AuthService } from 'src/app/shared/auth/auth-service/auth.service';
 const SIMILAR_PERSON_CRITERIA = [
   'firstName',
   'lastName',
@@ -106,46 +107,31 @@ export class ImmunizationAddComponent implements AfterViewInit, OnDestroy {
   }
 
   handleSubmit(formValue: any[]): void {
-    const [{ person }] = formValue;
-
-    const filters: Filter[] = Object.entries(person)
-      .map(([field, value]) => ({
-        field,
-        value,
-      }))
-      .filter((prop) => SIMILAR_PERSON_CRITERIA.includes(prop.field));
-    this.subscriptions.push(
-      this.personService.getSimilar(filters).subscribe({
-        next: (similarPersons) => {
-          if (similarPersons.length) {
-            this.pickPerson(formValue, similarPersons);
-            this.formActionsService.setCloseFormModal(this.formId, true);
-          } else {
-            this.savePerson(formValue);
-          }
-        },
-        error: (error) => {
-          this.notificationService.error(error);
-        },
-      })
-    );
+    this.savePerson(formValue);
   }
 
   savePerson(formValue: any): void {
     const [{ person, ...rest }, $service] = formValue;
+    person.uuid = createUuid();
+    delete rest.immunizationManagementOverwrite;
     this.subscriptions.push(
       this.personService.add([person]).subscribe({
         next: (result: any) => {
+          delete rest["facilityTypeGroup"];
           this.saveImmunization($service, {
             ...rest,
             ...{
               person: {
-                uuid: result.uuid,
+                uuid: person.uuid,
               },
+              reportingUser: {
+                uuid: "TTNLUW-6O2QJX-CLFBZS-ZTSOKKBQ"
+              }
             },
           });
         },
         error: (error: any) => {
+        
           this.notificationService.error(error);
         },
       })

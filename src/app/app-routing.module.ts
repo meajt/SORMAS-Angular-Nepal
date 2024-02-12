@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { getEnv } from '../environments/getEnv';
+import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 import { AuthLegacyGuard } from './shared/auth/app-legacy.guard';
 import { AuthGuard } from './shared/auth/app.guard';
-import { NotFoundComponent } from './_common-components/not-found/not-found.component';
 
 const Guard = getEnv().isLegacyLogin ? AuthLegacyGuard : AuthGuard;
 

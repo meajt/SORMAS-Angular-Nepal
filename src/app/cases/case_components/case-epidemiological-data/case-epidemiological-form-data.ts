@@ -1,14 +1,81 @@
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { FORM_DATA_RADIO, FORM_DATA_WIDGET, YesNoUnknown } from '../../../app.constants';
+import { Disease, FORM_DATA_RADIO, FORM_DATA_SELECT, FORM_DATA_WIDGET, YesNoUnknown } from '../../../app.constants';
 
 const pipe = new EnumToKeyValuePipe();
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
+const optionsDisese = pipe.transform(Disease);
+
 
 export const FORM_DATA_CASE_EPID_DETAILS = [
+  {
+    id: 'caseDetection',
+    title: '',
+    fields: [
+      {
+        ...FORM_DATA_SELECT,
+        key: 'epiData.caseDetectionMethodGroup',
+        label: 'Case Detection Method Group',
+        options: [
+          { key: 'ACTIVE', value: 'Active Case Detection' },
+          { key: 'PASSIVE', value: 'Passive Case Detection' },
+        ],
+        className: 'size-full',
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'epiData.caseDetectionMethodActive',
+        label: 'Case Detection Method',
+        options: [
+          { key: 'REFER', value: 'Refer' },
+          { key: 'CONTACT_EXAMINATION', value: 'Contact Examination' },
+        ],
+        className: 'size-full',
+        dependingOn: 'epiData.caseDetectionMethodGroup',
+        dependingOnValues: ['ACTIVE'],
+      },
+      {
+        ...FORM_DATA_SELECT,
+        key: 'epiData.caseDetectionMethodPassive',
+        label: 'Case Detection Method',
+        options: [
+          { key: 'VOLUNTARY', value: 'Voluntary' },
+          { key: 'HOSPITAL_VISIT_FOR_OTHER_PURPOSE', value: 'Hospital Visit For Other Purpose' },
+          { key: 'SURVEY', value: 'Survey' },
+          { key: 'LEPROSY_POST_EXPOSURE_PROPHYLAXIS', value: 'Leprosy Post Exposure Prophylaxis' },
+        ],
+        className: 'size-full',
+        dependingOn: 'epiData.caseDetectionMethodGroup',
+        dependingOnValues: ['PASSIVE'],
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'epiData.familyHistoryOfDisease',
+        label: 'Family History of Leprosy',
+        options: optionsYesNoUnknown,
+        newLine: true,
+        className: 'size-large',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'epiData.familyHistoryOfDisease',
+        label: 'Contact Examination Done',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'epiData.familyHistoryOfDisease',
+        label: 'Skin Smear Test Positive',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
+      },
+    ],
+  },
   {
     id: 'exposureInvestigation',
     title: 'strings.headingExposureInvestigation',
     subTitle: 'strings.infoExposureInvestigation',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -27,6 +94,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     id: 'activity',
     title: 'captions.EpiData.activitiesAsCase',
     subTitle: 'strings.infoActivityAsCaseInvestigation',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -44,6 +112,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     id: 'incubation',
     title: 'EpiData.incubationPeriod',
     subTitle: 'strings.infoEpiDataFieldsHint',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -63,6 +132,7 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
     id: 'contacts',
     title: 'EpiData.contactWithSourceCase',
     subTitle: 'strings.infoEpiDataSourceCaseContacts',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
