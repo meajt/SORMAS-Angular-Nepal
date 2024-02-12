@@ -785,6 +785,7 @@ export const FORM_DATA_CASE_DETAILS = [
     id: 'work',
     title: 'CaseData.work',
     required: false,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
