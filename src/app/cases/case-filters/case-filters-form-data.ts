@@ -1,22 +1,22 @@
+import { FormGroupStyleType } from '../../_models/common';
 import {
+  CaseClassification,
+  CaseOrigin,
+  CaseOutcome,
+  DateFilterOptions,
+  Disease,
+  EntityRelevanceStatusOptions,
+  FORM_DATA_DATE,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
-  EntityRelevanceStatusOptions,
-  FORM_DATA_SELECT,
   FORM_DATA_SEARCHBOX,
-  CaseOutcome,
-  CaseOrigin,
-  Disease,
-  CaseClassification,
+  FORM_DATA_SELECT,
   FollowupStatus,
-  Presentcondition,
-  UserRole,
-  FORM_DATA_DATE,
-  SymptomJournalStatus,
-  DateFilterOptions,
   NewCaseDateType,
+  Presentcondition,
+  SymptomJournalStatus,
+  UserRole,
 } from '../../app.constants';
-import { FormGroupStyleType } from '../../_models/common';
 
 import { EnumToKeyValuePipe } from '../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
@@ -74,6 +74,7 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'relevance',
     title: 'strings.entityCases',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -88,6 +89,7 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'origin',
     title: 'captions.CaseData.caseOrigin',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -101,6 +103,7 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'events',
     title: 'captions.caseEvents',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SEARCHBOX,
@@ -114,6 +117,7 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'birthdate',
     title: 'headingBirthdate',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -142,6 +146,7 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'medicalAspect',
     title: 'headingMedicalAspects',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -182,7 +187,7 @@ export const FORM_DATA_CASE_FILTERS = [
         ...FORM_DATA_SELECT,
         key: 'region.uuid',
         service: 'regionService',
-        placeholder: 'captions.CaseData.responsibleRegion',
+        placeholder: 'captions.CaseData.province',
         className: 'fullwidth',
       },
       {
@@ -194,7 +199,7 @@ export const FORM_DATA_CASE_FILTERS = [
             key: 'region.uuid',
           },
         ],
-        placeholder: 'captions.CaseData.responsibleDistrict',
+        placeholder: 'captions.CaseData.district',
         className: 'fullwidth',
       },
       {
@@ -206,7 +211,7 @@ export const FORM_DATA_CASE_FILTERS = [
             key: 'district.uuid',
           },
         ],
-        placeholder: 'captions.CaseData.responsibleCommunity',
+        placeholder: 'captions.CaseData.municipality',
         className: 'fullwidth',
       },
       {
@@ -269,6 +274,8 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'adminAspect',
     title: 'headingAdminAspect',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
+
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -355,6 +362,7 @@ export const FORM_DATA_CASE_FILTERS = [
     id: 'more',
     title: 'headingMoreFilters',
     appearance: FormGroupStyleType.COLLAPSABLE,
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
