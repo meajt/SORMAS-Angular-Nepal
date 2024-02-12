@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve --host 192.168.13.95 --proxy-config proxy.conf.json\" \"npm run start-proxy\"",
+    "start": "concurrently \"ng serve --host 192.168.250.122 --proxy-config proxy.conf.json\" \"npm run start-proxy\"",
     "start-proxy": "npm run start --prefix projects/api-proxy",
     "build": "ng build --configuration production --base-href /sormas-angular/",
     "analyze-bundle": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/app/stats.json ",

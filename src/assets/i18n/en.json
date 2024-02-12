@@ -412,6 +412,9 @@
     "CaseData.previousQuarantineTo": "Previous quarantine end",
     "CaseData.quarantineChangeComment": "Quarantine change comment",
     "CaseData.region": "Region",
+    "CaseData.province" : "Province",
+    "CaseData.municipality" : "Municipality",
+    "CaseData.wardNo" : "Ward No",
     "CaseData.regionLevelDate": "Date received at region level",
     "CaseData.reportDate": "Date of report",
     "CaseData.reportingUser": "Reporting user",
@@ -4616,6 +4619,7 @@
     "EnumColumn.DESCRIPTION": "Description",
     "EnumColumn.SHORT": "Short"
   },
+
   "strings": {
     "active": "Active",
     "address": "Address",
@@ -5993,7 +5997,10 @@
     "DefaultPassword.unchanged": "- unchanged -",
     "sormasToSormasLoadingShares": "Loading shares...",
     "errorConstraintViolation": "Invalid data",
-    "reloadPageToSeeChanges": "Please reload the page to see the latest changes."
+    "reloadPageToSeeChanges": "Please reload the page to see the latest changes.",
+    "Address": "Address"
+
+
   },
   "subcontinents": {
     "subcontinent.NORTHERN_AFRICA.name": "Northern Africa",

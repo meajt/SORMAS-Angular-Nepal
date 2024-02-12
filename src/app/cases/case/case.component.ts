@@ -1,17 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { NotificationService } from '../../_services/notification.service';
-import { CaseService } from '../../_services/api/case.service';
-import {
-  CaseClassificationIcons,
-  EntityLink,
-  CaseOutcomeIcons,
-  CASE_ORIGIN,
-  CASE_DETAILS_FORM_ID,
-} from '../../app.constants';
 import { CaseDataDto } from '../../_models/caseDataDto';
+import { CaseService } from '../../_services/api/case.service';
 import { HelperService } from '../../_services/helper.service';
+import { NotificationService } from '../../_services/notification.service';
+import {
+  CASE_DETAILS_FORM_ID,
+  CASE_ORIGIN,
+  CaseClassificationIcons,
+  CaseOutcomeIcons,
+  EntityLink,
+} from '../../app.constants';
 import { actionsEditDefs } from './case-actions-data';
 
 // case routing for tabs
@@ -23,27 +23,27 @@ const caseLinks = (caseId: string): EntityLink[] => {
       title: 'captions.View.cases.person',
       showFormActions: true,
     },
-    {
-      link: `/cases/case/${caseId}/hospitalization`,
-      title: 'captions.CaseHospitalization',
-      showFormActions: true,
-    },
+    // {
+    //   link: `/cases/case/${caseId}/hospitalization`,
+    //   title: 'captions.CaseHospitalization',
+    //   showFormActions: true,
+    // },
     {
       link: `/cases/case/${caseId}/port-health`,
       title: 'captions.CaseData.portHealthInfo',
       showFormActions: true,
     },
-    { link: `/cases/case/${caseId}/symptoms`, title: 'captions.Symptoms', showFormActions: true },
+    // { link: `/cases/case/${caseId}/symptoms`, title: 'captions.Symptoms', showFormActions: true },
     {
       link: `/cases/case/${caseId}/epidemiological-data`,
       title: 'captions.EpiData',
       showFormActions: true,
     },
     { link: `/cases/case/${caseId}/therapy`, title: 'captions.CaseData.therapy' },
-    {
-      link: `/cases/case/${caseId}/follow-up`,
-      title: 'captions.caseFollowupVisitsView',
-    },
+    // {
+    //   link: `/cases/case/${caseId}/follow-up`,
+    //   title: 'captions.caseFollowupVisitsView',
+    // },
     {
       link: `/cases/case/${caseId}/clinical-course`,
       title: 'captions.View.cases.clinicalcourse',

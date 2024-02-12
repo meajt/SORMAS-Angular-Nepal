@@ -1,14 +1,14 @@
+import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
+  FORM_DATA_DATETIME,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
   FORM_DATA_SELECT,
-  FORM_DATA_WIDGET,
-  FORM_DATA_DATETIME,
-  YesNoUnknown,
   FORM_DATA_TEXTAREA,
+  FORM_DATA_WIDGET,
   TemperatureSource,
+  YesNoUnknown,
 } from '../../../app.constants';
-import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 
 const pipe = new EnumToKeyValuePipe();
 
@@ -81,67 +81,118 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
     title: 'strings.headingClinicalMeasurements',
     fields: [
       {
-        ...FORM_DATA_SELECT,
-        key: 'temperature',
-        label: 'captions.Symptoms.temperature',
-        options: optionsTemperature,
+        ...FORM_DATA_RADIO,
+        key: 'clinicalTypeMeasurement',
+        label: 'Type Of Clinical Measurement',
+        options: [
+          { key: 'DIAGNOSIS', value: 'DIAGNOSIS' },
+          { key: 'CONTINUATION', value: 'CONTINUATION' },
+          { key: 'RFT', value: 'RFT' },
+        ],
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'temperatureSource',
-        label: 'captions.Symptoms.temperatureSource',
-        options: optionsTemperatureSource,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'weight',
-        label: 'captions.Symptoms.weight',
-        options: optionsWeight,
+        ...FORM_DATA_RADIO,
+        key: 'DisabilityGrading',
+        label: 'Disability Grading',
+        options: [
+          { key: '0', value: '0' },
+          { key: '1', value: '1' },
+          { key: '2', value: '2' },
+        ],
         newLine: true,
+        className: 'size-large',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'height',
-        label: 'captions.Symptoms.height',
-        options: optionsHeight,
+        ...FORM_DATA_RADIO,
+        key: 'ulcer',
+        label: 'Ulcer',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'midUpperArmCircumference',
-        label: 'captions.Symptoms.midUpperArmCircumference',
-        options: optionsArm,
+        ...FORM_DATA_INPUT,
+        key: 'EHF Score',
+        label: 'EHF Score',
+        className: 'size-large',
       },
       {
-        ...FORM_DATA_SELECT,
-        key: 'bloodPressureSystolic',
-        label: 'captions.Symptoms.bloodPressureSystolic',
-        options: optionsBloodPressure,
+        ...FORM_DATA_RADIO,
+        key: 'leprosyReaction',
+        label: 'Leprosy Reaction',
+        options: optionsYesNoUnknown,
+        className: 'size-large',
         newLine: true,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'bloodPressureDiastolic',
-        label: 'captions.Symptoms.bloodPressureDiastolic',
-        options: optionsBloodPressure,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'heartRate',
-        label: 'captions.Symptoms.heartRate',
-        options: optionsBloodPressure,
-        newLine: true,
-      },
-      {
-        ...FORM_DATA_SELECT,
-        key: 'respiratoryRate',
-        label: 'captions.Symptoms.respiratoryRate',
-        options: optionsRespiratoryRate,
+
       },
     ],
   },
+  // {
+  //   id: 'measurements',
+  //   title: 'strings.headingClinicalMeasurements',
+  //   fields: [
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'temperature',
+  //       label: 'captions.Symptoms.temperature',
+  //       options: optionsTemperature,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'temperatureSource',
+  //       label: 'captions.Symptoms.temperatureSource',
+  //       options: optionsTemperatureSource,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'weight',
+  //       label: 'captions.Symptoms.weight',
+  //       options: optionsWeight,
+  //       newLine: true,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'height',
+  //       label: 'captions.Symptoms.height',
+  //       options: optionsHeight,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'midUpperArmCircumference',
+  //       label: 'captions.Symptoms.midUpperArmCircumference',
+  //       options: optionsArm,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'bloodPressureSystolic',
+  //       label: 'captions.Symptoms.bloodPressureSystolic',
+  //       options: optionsBloodPressure,
+  //       newLine: true,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'bloodPressureDiastolic',
+  //       label: 'captions.Symptoms.bloodPressureDiastolic',
+  //       options: optionsBloodPressure,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'heartRate',
+  //       label: 'captions.Symptoms.heartRate',
+  //       options: optionsBloodPressure,
+  //       newLine: true,
+  //     },
+  //     {
+  //       ...FORM_DATA_SELECT,
+  //       key: 'respiratoryRate',
+  //       label: 'captions.Symptoms.respiratoryRate',
+  //       options: optionsRespiratoryRate,
+  //     },
+  //   ],
+  // },
   {
     id: 'symptoms',
     title: 'strings.headingSignsAndSymptoms',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_WIDGET,
@@ -155,6 +206,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   {
     id: 'general',
     title: 'enum.SymptomGroup.GENERAL',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -203,6 +255,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   {
     id: 'respiratory',
     title: 'enum.SymptomGroup.RESPIRATORY',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -272,6 +325,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   {
     id: 'respiratory',
     title: 'enum.SymptomGroup.CARDIOVASCULAR',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -285,6 +339,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   {
     id: 'gastrointestinal',
     title: 'enum.SymptomGroup.GASTROINTESTINAL',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_RADIO,
@@ -305,6 +360,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   {
     id: 'other',
     title: 'enum.SymptomGroup.OTHER',
+    hidden: true,
     fields: [
       {
         ...FORM_DATA_SELECT,
@@ -346,6 +402,7 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
   },
   {
     id: 'additionalDetails',
+    hidden: true,
     title: 'headingAdditionalDetails',
     fields: [
       {
