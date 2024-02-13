@@ -1,9 +1,10 @@
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
-import { Disease, FORM_DATA_RADIO, FORM_DATA_SELECT, FORM_DATA_WIDGET, YesNoUnknown } from '../../../app.constants';
+import { Disease, FORM_DATA_INPUT, FORM_DATA_RADIO, FORM_DATA_SELECT, FORM_DATA_WIDGET, YesNoUnknown } from '../../../app.constants';
 
 const pipe = new EnumToKeyValuePipe();
 const optionsYesNoUnknown = pipe.transform(YesNoUnknown);
 const optionsDisese = pipe.transform(Disease);
+
 
 
 export const FORM_DATA_CASE_EPID_DETAILS = [
@@ -57,17 +58,59 @@ export const FORM_DATA_CASE_EPID_DETAILS = [
       },
       {
         ...FORM_DATA_RADIO,
-        key: 'epiData.familyHistoryOfDisease',
+        key: 'epiData.contactExaminationDone',
         label: 'Contact Examination Done',
         options: optionsYesNoUnknown,
         className: 'size-large',
       },
       {
+        ...FORM_DATA_INPUT,
+        key: 'epiData.noOfFamilyContact',
+        label: 'No of Family Contact',
+        className: 'size-large',
+        dependingOn: 'epiData.contactExaminationDone',
+        dependingOnValues: ['YES'],
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'epiData.noOfNeighbourContact',
+        label: 'No of Neighbour Contact',
+        className: 'size-large',
+        dependingOn: 'epiData.contactExaminationDone',
+        dependingOnValues: ['YES'],
+      },
+      {
+        ...FORM_DATA_INPUT,
+        key: 'epiData.noOfSocialContact',
+        label: 'No of Social Contact',
+        className: 'size-large',
+        dependingOn: 'epiData.contactExaminationDone',
+        dependingOnValues: ['YES'],
+      },
+      {
         ...FORM_DATA_RADIO,
-        key: 'epiData.familyHistoryOfDisease',
+        key: 'epiData.skinSmearTestPositive',
         label: 'Skin Smear Test Positive',
         options: optionsYesNoUnknown,
         className: 'size-large',
+        newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'epiData.leprosyResult',
+        label: 'Leprosy Result',
+        options: [
+          { key: '1', value: '1+' },
+          { key: '2', value: '2+' },
+          { key: '3', value: '3+' },
+          { key: '4', value: '4+' },
+          { key: '5', value: '5+' },
+          { key: '6', value: '6+' },
+        ],
+        className: 'size-large',
+        dependingOn: 'epiData.skinSmearTestPositive',
+        dependingOnValues: ['YES'],
       },
     ],
   },
