@@ -1,5 +1,6 @@
 import { EnumToKeyValuePipe } from '../../../_pipes/enum-to-key-value/enum-to-key-value.pipe';
 import {
+  FORM_DATA_DATE,
   FORM_DATA_DATETIME,
   FORM_DATA_INPUT,
   FORM_DATA_RADIO,
@@ -7,7 +8,7 @@ import {
   FORM_DATA_TEXTAREA,
   FORM_DATA_WIDGET,
   TemperatureSource,
-  YesNoUnknown,
+  YesNoUnknown
 } from '../../../app.constants';
 
 const pipe = new EnumToKeyValuePipe();
@@ -122,7 +123,36 @@ export const FORM_DATA_CLINICAL_COURSE_ADD = [
         options: optionsYesNoUnknown,
         className: 'size-large',
         newLine: true,
+      },
+      {
+        ...FORM_DATA_RADIO,
+        key: 'leprosyStage',
+        label: 'Leprosy Stage',
+        options: [
+          { key: 'I', value: 'TYPE I' },
+          { key: 'II', value: 'TYPE II' },
+          { key: 'NEURITIS', value: 'NEURITIS' },
+        ],
+        className: 'size-large',
+        dependingOn: 'leprosyReaction',
+        dependingOnValues: ['YES'],
+      },
+      {
+        ...FORM_DATA_DATE,
+        key: 'Date Of Diagnosis',
+        label: 'Date Of Diagnosis',
+        className: 'size-large',
+        dependingOn: 'leprosyStage',
+        dependingOnValues: ['I', 'II', 'NEURITIS'],
+      },
 
+      {
+        ...FORM_DATA_INPUT,
+        key: 'Treatment',
+        label: 'Treatment',
+        className: 'size-large',
+        dependingOn: 'leprosyStage',
+        dependingOnValues: ['I', 'II', 'NEURITIS'],
       },
     ],
   },

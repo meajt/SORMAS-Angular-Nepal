@@ -1,14 +1,14 @@
 import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CaseDataDto } from '../../../_models/caseDataDto';
+import { BaseService } from '../../../_services/api/base.service';
+// import { EventService } from '../../../_services/api/event.service';
+// import { SampleService } from '../../../_services/api/sample.service';
+// import { TaskService } from '../../../_services/api/task.service';
+import { FormElementControlService } from '../../../_services/form-element-control.service';
+import { CASE_DETAILS_FORM_ID } from '../../../app.constants';
 import { FormBase } from '../../../shared/dynamic-form/types/form-element-base';
 import * as data from './case-details-form-data';
-import { FormElementControlService } from '../../../_services/form-element-control.service';
-import { BaseService } from '../../../_services/api/base.service';
-import { CaseDataDto } from '../../../_models/caseDataDto';
-import { TaskService } from '../../../_services/api/task.service';
-import { SampleService } from '../../../_services/api/sample.service';
-import { EventService } from '../../../_services/api/event.service';
-import { CASE_DETAILS_FORM_ID } from '../../../app.constants';
 
 @Component({
   selector: 'app-case-details',
@@ -27,9 +27,9 @@ export class CaseDetailsComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private formElementControlService: FormElementControlService,
-    public taskService: TaskService,
-    public sampleService: SampleService,
-    public eventService: EventService
+    // public taskService: TaskService,
+    // public sampleService: SampleService,
+    // public eventService: EventService
   ) {}
 
   ngAfterViewInit(): void {
